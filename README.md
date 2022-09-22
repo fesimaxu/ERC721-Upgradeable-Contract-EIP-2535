@@ -6,14 +6,24 @@ The standard loupe functions have been gas-optimized in this implementation and 
 
 **Note:** The loupe functions in DiamondLoupeFacet.sol MUST be added to a diamond and are required by the EIP-2535 Diamonds standard.
 
+# Conract Address Diamond Cut
+
+0x887d838a154790b795ac72b34e0f158b58c5456d01074f52e3515e9b0fcc1c3f
+
+# faceAddress
+
+0x430B7458b8a84Ee274bd2AB3D6DB55C40E3BE642, 0x8a51319B65252ae82c0209a3dAED3a716Cf9d170
+
 ## Installation
 
 1. Clone this repo:
+
 ```console
 git clone git@github.com:mudgen/diamond-3-hardhat.git
 ```
 
 2. Install NPM packages:
+
 ```console
 cd diamond-3-hardhat
 npm install
@@ -33,9 +43,10 @@ npx hardhat run scripts/deploy.js
 1. Facets are deployed.
 1. The diamond is upgraded. The `diamondCut` function is used to add functions from facets to the diamond. In addition the `diamondCut` function calls the `init` function from the `DiamondInit` contract using `delegatecall` to initialize state variables.
 
-How a diamond is deployed is not part of the EIP-2535 Diamonds standard. This implementation shows a usable example. 
+How a diamond is deployed is not part of the EIP-2535 Diamonds standard. This implementation shows a usable example.
 
 ## Run tests:
+
 ```console
 npx hardhat test
 ```
@@ -44,7 +55,7 @@ npx hardhat test
 
 Check the `scripts/deploy.js` and or the `test/diamondTest.js` file for examples of upgrades.
 
-Note that upgrade functionality is optional. It is possible to deploy a diamond that can't be upgraded, which is a 'Single Cut Diamond'.  It is also possible to deploy an upgradeable diamond and at a later date remove its `diamondCut` function so it can't be upgraded any more.
+Note that upgrade functionality is optional. It is possible to deploy a diamond that can't be upgraded, which is a 'Single Cut Diamond'. It is also possible to deploy an upgradeable diamond and at a later date remove its `diamondCut` function so it can't be upgraded any more.
 
 Note that any number of functions from any number of facets can be added/replaced/removed on a diamond in a single transaction. In addition an initialization function can be executed in the same transaction as an upgrade to initialize any state variables required for an upgrade. This 'everything done in a single transaction' capability ensures a diamond maintains a correct and consistent state during upgrades.
 
@@ -101,6 +112,7 @@ string result = MyUsefulFacet(address(diamondContract)).getResult()
 If you need help or would like to discuss diamonds then send me a message [on twitter](https://twitter.com/mudgen), or [email me](mailto:nick@perfectabstractions.com). Or join the [EIP-2535 Diamonds Discord server](https://discord.gg/kQewPw2).
 
 ## Useful Links
+
 1. [Introduction to the Diamond Standard, EIP-2535 Diamonds](https://eip2535diamonds.substack.com/p/introduction-to-the-diamond-standard)
 1. [EIP-2535 Diamonds](https://github.com/ethereum/EIPs/issues/2535)
 1. [Understanding Diamonds on Ethereum](https://dev.to/mudgen/understanding-diamonds-on-ethereum-1fb)
@@ -122,4 +134,3 @@ Contact:
 
 MIT license. See the license file.
 Anyone can use or modify this software for their purposes.
-
